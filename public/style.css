@@ -1,0 +1,41 @@
+html { 
+    overflow-y:scroll; 
+}
+
+body { 
+    padding-top:50px; 
+}
+
+#item-list { 
+    margin-bottom:30px; 
+
+}
+#item-form { 
+    margin-bottom:50px; 
+}
+
+h5 {
+    text-align:center;
+}
+
+#name-form {
+    width: 70%;
+    margin:auto;
+}
+
+#text-form {
+    height: 100px;
+    display: block;
+}
+
+#name-span {
+    font-size: 18px;
+}
+
+.small-p {
+    font-size: 10px;
+}
+
+.panel {
+    background-color: rgb(238, 236, 236);
+}

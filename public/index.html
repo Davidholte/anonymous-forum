@@ -1,0 +1,121 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="daveMean">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>AnonForum</title>
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+
+	<!-- Scripts -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+	<script src="angularjs/controllers/main.js"></script> <!-- load controller -->
+	<script src="angularjs/services/items.js"></script> <!-- load item service -->
+	<script src="angularjs/core.js"></script> <!-- load main application -->
+
+</head>
+<!-- SET THE CONTROLLER -->
+<body ng-controller="mainController">
+       
+    <!-- Wrapper -->
+	<div class="container">
+
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Anon Forum</a>
+                  </div>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Page 1</a></li>
+                    <li><a href="#">Page 2</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"></span> Admin Login</a></li>
+                  </ul>
+                </div>
+              </nav>
+        
+      <!-- Login Button -->
+ 
+
+		<!-- HEADER AND ITEM COUNT -->
+		<div class="jumbotron text-center">
+            <h1>Anon Forum</h1>
+            <h2>Current amount of Posts: <span class="label label-info">{{ items.length }}</span></h2>
+            <p id="date"></p>
+            
+		</div>
+
+        <!-- FORM TO CREATE ITEMS -->
+        <div class="text-center text-muted">
+                <h5>Press the Add button to submit post.</h5>
+                <h5>Check the box to delete the post.</h5>
+        </div>
+
+		<div id="item-form" class="row">
+                <div class="col-sm-8 col-sm-offset-2 text-center">
+                    <form>
+                        <div class="form-group">
+    
+                            <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                            <input type="text" id="name-form" class="form-control input-lg text-center" placeholder="Write your Name.. " ng-model="formData.name">
+                            <textarea id="text-form" class="form-control input-lg" placeholder="Write some stuff.." ng-model="formData.text"></textarea>
+                        </div>
+    
+                        <!-- createItem() WILL CREATE NEW ITEMS -->
+                        <button type="submit" class="btn btn-primary btn-lg" ng-click="createItem()">Submit</button>
+                    </form>
+                </div>
+        </div>
+
+		<!-- ITEM LIST -->
+		<div id="item-list" class="row">
+
+            <div class="col-sm-4 col-sm-offset-4">
+
+				<!-- LOOP OVER THE ITEMS IN $scope.items -->
+				<div class="checkbox" ng-repeat="item in items">
+                    
+                        <label>
+                            <h5><b>Post submitted by: </b><span id="name-span">{{ item.name }}</span></h5>
+                            <input type="checkbox" ng-click="deleteItem(item._id)">{{ item.text }}
+                            <br>
+                            <p class="small-p"><b>ID: </b>{{ item._id }}</p>
+                            <br>
+                        </label>
+                        <div class="panel panel-default"></div>
+				</div>
+
+				<p class="text-center" ng-show="loading">
+					<span class="fa fa-spinner fa-spin fa-3x"></span>
+				</p>
+			</div>
+		</div>
+
+		
+
+    </div>
+    <script>
+        document.getElementById("date").innerHTML = Date();
+
+            // Get the modal
+        var modal = document.getElementById('id01');
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
