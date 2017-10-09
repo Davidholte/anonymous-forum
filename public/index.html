@@ -39,20 +39,16 @@
                     <li><a href="#">Page 2</a></li>
                   </ul>
                   <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"></span> Admin Login</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Admin Login</a></li>
                   </ul>
                 </div>
               </nav>
-        
-      <!-- Login Button -->
- 
 
 		<!-- HEADER AND ITEM COUNT -->
 		<div class="jumbotron text-center">
             <h1>Anon Forum</h1>
             <h2>Current amount of Posts: <span class="label label-info">{{ items.length }}</span></h2>
             <p id="date"></p>
-            
 		</div>
 
         <!-- FORM TO CREATE ITEMS -->
@@ -107,9 +103,9 @@
     <script>
         document.getElementById("date").innerHTML = Date();
 
-            // Get the modal
+        // Get the modal
         var modal = document.getElementById('id01');
-        
+
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
             if (event.target == modal) {
